@@ -1,3 +1,196 @@
+p {
+    font-size: 14px
+}
+
 input, textarea {
     display: block;
+    width: 100%;
+}
+
+label {
+    float: left;
+}
+
+form {
+    width: 50%;
+    display: flex;
+    background-color: aquamarine;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    margin: auto;
+    padding: 0 5%;
+}
+
+section {
+    width: 80%;
+    margin: 20px 0;
+}
+
+.preview {
+    background-color: #FEDC98;
+}
+
+.cv {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 150px);
+    margin: auto;
+    width: 750px;
+    background-color: white;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    float: right;
+    top: 30px;
+}
+
+.picture-container {
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    border: 15px solid #2A282A;
+    background-color: white;
+    overflow: hidden;
+    margin-left: 50px;
+    z-index: 2;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.intro {
+    background-color: #FE9C00;
+    color: white;
+    width: 55%;
+    position: absolute;
+    right: 0;
+    padding: 25px 0 25px 50px;
+    z-index: 1;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.career {
+    padding-top: 285px;
+    grid-column: 1/4;
+    width: 90%;
+    padding-bottom: 100px;
+}
+
+
+
+.career h2 {
+    background-color: #FE9C00;
+    text-align: right;
+    padding: 5px 40px;
+    margin: 25px 0;
+    letter-spacing: 5px;
+}
+
+.career ul li::before {
+    content: "\25A0";
+    color: #FE9C00;
+    font-weight: bold;
+    font-size: 40px;
+    padding-right: 10px;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    margin: auto;
+    margin: 10px 0;
+}
+
+.other {
+    padding-top: 270px;
+    text-align: center;
+    background-color: #2A282A;
+    color: white;
+    width: 100%;
+    grid-column: 4/6;
+}
+
+.contact-me, .skills {
+    width: 70%;
+    margin: auto;
+}
+
+.other h2 {
+    border: solid 3px #FE9C00;
+    padding: 5px 0px;
+    width: calc(100% - 6px);
+    margin: auto;
+    font-weight: normal;
+}
+
+.contact-me ul {
+    padding-left: 10px;
+    margin: 25px auto;
+}
+
+.other h3 {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.other li i {
+    color: #FE9C00;
+    font-size: 20px;
+    padding-right: 15px;
+}
+
+.skills ul {
+    padding: 0;
+    margin: 25px auto;
+}
+
+.skills li {
+    text-align: center;
+}
+
+.level-bar {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    border: solid 2px #FE9C00;
+    height: 11px;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+
+.level-bar div {
+    background-color: #FE9C00;
+    height: 100%;
+    /* grid-column: 1/11; */
+}
+
+.about-me p, p.description {
+    padding-left: 40px;
+    font-size: 12px;
+}
+
+.career .title {
+    font-weight: bold;
+}
+
+.other .title {
+    font-weight: normal;
+    margin: 5px 0;
+}
+
+.main {
+    width: 100%;
 }

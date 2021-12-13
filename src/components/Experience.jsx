@@ -1,35 +1,22 @@
 import React from 'react';
 import ExperienceItem from './ExperienceItem';
 
-class Experience extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            itemsCount: 0,
-        };
+function Experience(props) {
 
-        this.handleAddItem = this.handleAddItem.bind(this);
-    }
+    return (
+        <section id="experience">
+            <h1>Experience</h1>
+            {
+                Array(props.data.length).fill().map((item, index) => {
+                    return <ExperienceItem id={index} key={index} visible={index === props.data.length - 1 ? true : false} handleChange={props.handleChange} handleRemoveItem={props.handleRemoveItem} noEmptyFields={props.noEmptyFields} data={props.data} />
+                })
+            }
+            {
+               props.data.length === 0 || props.noEmptyFields(props.data[props.data.length - 1]) ? <button onClick={(e) => props.handleAddItem(e, 'experience')}><i className="fas fa-plus"></i></button> : null
+            }
+        </section>
+    );
 
-    handleAddItem = () => {
-        this.props.handleAddItem();
-        this.setState({
-            itemsCount: this.state.itemsCount + 1,
-        });
-    }
-
-    render() {
-        return (
-            <div>
-                {
-                    Array(this.state.itemsCount + 1).fill().map((item, index) => {
-                        return <ExperienceItem id={index} key={index} visible={index === this.state.itemsCount ? true : false} handleChange={this.props.handleChange} data={this.props.data} />
-                    })
-                }
-                <button onClick={this.handleAddItem}>+</button>
-            </div>
-        );
-    }
 }
 
 export default Experience;
