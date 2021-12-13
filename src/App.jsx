@@ -2,7 +2,7 @@ import React from "react";
 // import Form from "./components/Form";
 import Preview from "./components/Preview";
 // import "./styles/App.css";
-import FormSection from "./components/FormSection";
+// import FormSection from "./components/FormSection";
 import Form from "./components/Form";
 
 class App extends React.Component {
@@ -78,7 +78,7 @@ class App extends React.Component {
 
   handleChange = (e, type, itemIndex) => {
     console.log(itemIndex);
-    const { name, value, files } = e.target;
+    const { name, value } = e.target;
     this.setState(prevState => ({
       data: {
         ...prevState.data,

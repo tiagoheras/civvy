@@ -1,5 +1,4 @@
 import React from 'react';
-import Controls from './Controls';
 import FormInput from './FormInput';
 import ItemCard from './ItemCard';
 
