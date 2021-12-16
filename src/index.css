@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    li i {
+        @apply text-[#FE9C00] text-xl pr-4;
+    }
+
+    li {
+        @apply flex items-center content-between text-left m-auto my-2.5 mx-0;
+    }
+
+    ul {
+        @apply pl-10;
+    }
+
+    h1 {
+        @apply text-[2rem] font-bold;
+    }
+
+    h2 {
+        @apply text-2xl font-bold;
+    }
+
+    p {
+        @apply text-sm;
+    }
+
+    .section-header {
+        @apply bg-[#FE9C00] text-right py-1 px-10 my-6 tracking-[5px];
+    }
+
+    .dark-section-header {
+        @apply text-xl text-center font-normal border-[3px] border-[#FE9C00] my-7 mx-auto py-1.5;
+    }
+
+    .description {
+        @apply text-xs pl-10;
+    }
+
+    .career-item {
+        @apply before:content-["\25A0"] before:text-[#FE9C00] before:font-bold before:text-[40px] before:pr-2.5;
+    }
+
+}

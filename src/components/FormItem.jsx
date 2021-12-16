@@ -44,7 +44,7 @@ class FormItem extends React.Component {
                         </div>
                     ) : null
                 }
-                <div className='grid grid-cols-3 lg:grid-cols-4 lg:gap-x-5 p-8'>
+                <div className='grid lg:gap-x-5 p-8'>
                     {
                         Object.keys(this.props.data).map((field, index) => {
                             let input = {
@@ -58,23 +58,32 @@ class FormItem extends React.Component {
                             if (field === 'description') {
                                 input.element = 'textarea';
                                 input.inputStyle = 'h-48'
-                            } else if (field === 'picture') {
+                            }
+                            if (field === 'picture') {
                                 input.type = 'file';
-                            } else if (field === 'birthday') {
+                            }
+                            if (field === 'birthday') {
                                 input.type = 'date';
                                 input.style = 'col-span-2';
-                            } else if (field === 'phone' || field === 'from' || field === 'to') {
-                                if (field === 'from' || field === 'to') {
-                                    input.containerStyle = 'lg:col-span-2';
-                                } else {
-                                    input.containerStyle = 'lg:col-span-2';
-                                }
+                            }
+                            if (field === 'phone' || field === 'from' || field === 'to') {
+                                input.containerStyle = 'lg:col-span-2';
                                 input.type = 'number';
-                            } else if (field === 'email') {
+                            }
+                            if (field === 'email') {
                                 input.type = 'email';
                                 input.containerStyle = 'lg:col-span-2';
-                            } else {
                             }
+                            if (field === 'level') {
+                                if (this.props.section === 'skills') {
+                                    input.type = 'number';
+                                    input.max = 10;
+                                    input.min = 1;
+                                } else {
+                                    input.element = 'select';
+                                }
+                            }
+
 
                             return (
                                 <FormInput
@@ -87,14 +96,23 @@ class FormItem extends React.Component {
                                     containerStyle={input.containerStyle}
                                     inputStyle={input.inputStyle}
                                     type={input.type}
-                                    value={this.props.data[field]}
+                                    options={this.props.section === 'languages' && field === 'level' ? ['Beginner', 'Intermediate', 'Advanced', 'Native'] : null}
+                                    max={input.max}
+                                    min={input.min}
+                                    value={input.type === 'file' ? this.props.data[field].value : this.props.data[field]}
                                     handleChange={this.props.handleChange}
                                 />
                             )
                         })
                     }
                 </div>
-
+                {
+                    this.props.data instanceof Array &&
+                        (this.props.data.length === 0 || Object.keys(this.props.data[this.props.data.length - 1]))
+                            .every(key => this.props.data[this.props.data.length - 1][key] !== "") ?
+                        <button className='bg-green-400 h-8 w-8 rounded-3xl block mx-auto' onClick={(e) => this.props.handleAddItem(e, this.props.section,)}><i className="fas fa-plus"></i></button>
+                        : null
+                }
             </div>
         )
     }

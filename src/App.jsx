@@ -13,12 +13,12 @@ class App extends React.Component {
       data: {
         general: {
           name: "Tiago Heras",
-          picture: '',
+          picture: {},
           role: "Front-end Developer",
           email: "tiagoheras@hotmail.com",
           phone: 1234567890,
           address: "123 Fake St",
-          birthday: '',
+          birthday: "2021-12-16",
           description: "I am a software engineer with a passion for building things that people love to use. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis molestie ipsum, ac suscipit est suscipit et. Sed ac urna euismod, varius felis eu, malesuada sem. Donec nisl risus, gravida id venenatis a, elementum nec augue. Quisque vel varius diam. Suspendisse lobortis porttitor mattis."
         },
         education: [
@@ -51,14 +51,28 @@ class App extends React.Component {
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis molestie ipsum, ac suscipit est suscipit."
           }
         ],
+        languages: [
+          {
+            name: "English",
+            level: "Advanced"
+          },
+          {
+            name: "Spanish",
+            level: "Native"
+          },
+        ],
         skills: [
           {
             name: "HTML",
-            level: 1
+            level: 9
           },
           {
             name: "CSS",
-            level: 1
+            level: 7
+          },
+          {
+            name: "JavaScript",
+            level: 8
           },
         ],
       }
@@ -77,8 +91,7 @@ class App extends React.Component {
   }
 
   handleChange = (e, type, itemIndex) => {
-    console.log(itemIndex);
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
     this.setState(prevState => ({
       data: {
         ...prevState.data,
@@ -92,20 +105,20 @@ class App extends React.Component {
           return item;
         }) : {
           ...prevState.data[type],
-          [name]: value
+          [name]: name === 'picture' ? files[0] : value,
         }
       }
     }))
   }
 
-  handleAddItem = (e, type) => {
+  handleAddItem = (e, type, newItem) => {
     e.preventDefault();
-    let newItem = {};
-    if (type === 'experience') {
-      newItem = { company: '', position: '', from: '', to: '', description: '' }
-    } else if (type === 'education') {
-      newItem = { school: '', degree: '', from: '', to: '' }
-    }
+    // let newItem = {};
+    // if (type === 'experience') {
+    //   newItem = { company: '', position: '', from: '', to: '', description: '' }
+    // } else if (type === 'education') {
+    //   newItem = { school: '', degree: '', from: '', to: '' }
+    // }
     this.setState(prevState => ({
       data: {
         ...prevState.data,

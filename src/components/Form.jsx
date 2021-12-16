@@ -5,14 +5,14 @@ class Form extends React.Component {
     render() {
         return (
             <div className="form-container w-full mx-auto">
-                <form className='w-full lg:w-3/5 rounded lg:px-10 mx-auto px-5 py-4 bg-zinc-200'>
+                <form className='w-full lg:w-1/2 rounded lg:px-10 mx-auto px-5 py-4 bg-zinc-200'>
                     <h1 className="text-3xl font-bold underline">Resume Builder</h1>
                     <FormSection
                         title='General'
                         handleChange={this.props.handleChange}
                         data={this.props.data.general}
                     />
-                    <FormSection 
+                    <FormSection
                         title='Education'
                         handleChange={this.props.handleChange}
                         data={this.props.data.education}
@@ -26,15 +26,20 @@ class Form extends React.Component {
                         handleRemoveItem={this.props.handleRemoveItem}
                         handleAddItem={this.props.handleAddItem}
                     />
-                    {/* <FormSection
-                    title='Languages'
-                    data={this.props.data.languages}
-                /> */}
-                    {/* <FormSection
+                    <FormSection
+                        title='Languages'
+                        handleChange={this.props.handleChange}
+                        data={this.props.data.languages}
+                        handleRemoveItem={this.props.handleRemoveItem}
+                        handleAddItem={this.props.handleAddItem}
+                    />
+                    <FormSection
                         title='Skills'
                         handleChange={this.props.handleChange}
                         data={this.props.data.skills}
-                    /> */}
+                        handleRemoveItem={this.props.handleRemoveItem}
+                        handleAddItem={this.props.handleAddItem}
+                    />
                 </form>
             </div>
         );

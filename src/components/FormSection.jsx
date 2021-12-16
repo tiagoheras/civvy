@@ -19,7 +19,8 @@ function FormSection(props) {
                             handleRemoveItem={props.handleRemoveItem}
                             handleAddItem={props.handleAddItem}
                             controls={true}
-                        />)
+                        />
+                    )
                         : <FormItem
                             data={props.data}
                             visible={true}
@@ -28,7 +29,13 @@ function FormSection(props) {
                         />
                 }
             </div>
-            <button></button>
+            {
+                props.data instanceof Array &&
+                    (props.data.length === 0 || Object.keys(props.data[props.data.length - 1]))
+                        .every(key => props.data[props.data.length - 1][key] !== "") ?
+                    <button className='bg-green-400 h-8 w-8 rounded-3xl block mx-auto' onClick={(e) => props.handleAddItem(e, props.title.toLowerCase())}><i className="fas fa-plus"></i></button>
+                    : null
+            }
         </section>
     );
 }
